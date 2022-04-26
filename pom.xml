@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>es.santander.nuar</groupId>
+	<artifactId>migration-project-test</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Darwin Migration Assistant Project Test</name>
+	<description>Migration Nuar to Darwin Project</description>
+
+	<!-- Use starter parent -->
+	<parent>
+		<groupId>es.santander.nuar</groupId>
+		<artifactId>santander-spring-boot-starter-parent</artifactId>
+		<version>1.7.1-RELEASE</version>
+	</parent>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Santander darwin libraries -->
+
+		<dependency>
+			<groupId>es.santander.nuar</groupId>
+			<artifactId>santander-nuar-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar.util</groupId>
+			<artifactId>common-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar.util</groupId>
+			<artifactId>exceptions-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar</groupId>
+			<artifactId>logging-component</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar.cache</groupId>
+			<artifactId>santander-nuar-cache-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar.util</groupId>
+			<artifactId>santander-nuar-omnichannel-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar.util</groupId>
+			<artifactId>santander-nuar-security-authentication-common-library</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>es.santander.nuar.util</groupId>
+			<artifactId>santander-nuar-security-authorization-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar.util</groupId>
+			<artifactId>santander-nuar-security-authentication-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.santander.nuar.util</groupId>
+			<artifactId>interceptors-library</artifactId>
+		</dependency>
+
+		<!-- End Santander darwin libraries -->
+
+		<!-- Log -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<maxAttempts>600</maxAttempts>
+					<fork>false</fork>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<locales>es</locales>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openrewrite.maven</groupId>
+				<artifactId>rewrite-maven-plugin</artifactId>
+				<version>4.21.0</version>
+				<configuration>
+					<activeRecipes>
+						<recipe>com.santander.darwin.migrationassistant.DarwinMigration_2_11</recipe>
+					</activeRecipes>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.santander.darwin</groupId>
+						<artifactId>migration-assistant</artifactId>
+						<version>3.0.0-RC2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.yml</include>
+					<include>**/*.yaml</include>
+					<include>**/banner.txt</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+	<repositories>
+		<repository>
+			<id>maven-releases-alm-master</id>
+			<name>maven-releases-alm-master</name>
+			<url>https://nexus.alm.europe.cloudcenter.corp/repository/maven-releases-alm-master</url>
+		</repository>
+	</repositories>
+</project>

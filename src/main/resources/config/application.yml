@@ -1,0 +1,99 @@
+es:
+  santander:
+    nuar:
+      name: migration-project-test #This propertie disappear.
+      connect-timeout: 10000 #Rename this property to darwin.core.rest-template.connect-timeout
+      read-timeout: 10000 #Rename this property to darwin.core.rest-template.read-timeout
+      connection-request-timeout: 2000 #Rename this property to darwin.core.rest-template.connection-request-timeout
+      async:
+        enabled: true #Rename this property to darwin.core.async.enabled
+        core-pool-size: 5 #Rename this property to darwin.core.async.core-pool-size
+        max-pool-size: 5 #Rename this property to darwin.core.async.max-pool-size
+        queue-capacity: 0 #Rename this property to darwin.core.async.queue-capacity
+        await-termination-seconds: 5 #Rename this property to darwin.core.async.await-termination-seconds
+        keep-alive-seconds: 5 #Rename this property to darwin.core.async.keep-alive-seconds
+        thread-name-prefix: MyAppThreadPrefix #Rename this property to darwin.core.async.thread-name-prefix
+      logging:
+        root:
+          log-level: WARN #This propertie disappear.
+        logLevel:
+          technical: WARN #This propertie disappear. Remplace to logging.level.<package>
+          root: INFO #Rename this property to logging.level.root
+        technical:
+          package: es.santander.nuar.migrationproject #This propertie disappear.
+          packagesLogLevel: WARN #This propertie disappear.
+          logLevel: WARN #This property has disappeared.
+        functional:
+          active: false #This propertie disappear
+          loggedEndpoints: '/hello' #Rename this property to darwin.logging.functional.logged-endpoints
+        activity: true #Rename this property to darwin.logging.activity.enabled
+        appKey: nuar #Rename this property to darwin.app-key
+        environment: CERT #Rename this property to darwin.logging.environment
+        system: Arquitectura Técnica #Rename this property to  darwin.logging.system
+        subsystem: subsystem #Rename this property to darwin.logging.subsystem
+        application: application #Rename this property to darwin.logging.application
+        subapplication: subapplication #Rename this property to darwin.logging.subapplication
+        paas-project: paasproject #Rename this property to darwin.logging.paasproject
+        paasAppVersion: "project.version" #Rename this property to darwin.logging.paas-app-version
+        subapplicationVersion: subapplication_v1 #This propertie disappear
+        active: false #This propertie disappear
+        pattern:
+          activity: pattern
+        kafka:
+          server: "kafkadarwin.santander.dev.corp:9092" #Rename this property to darwin.logging.kafka.server
+          uniqueTopic: nuar-test-log #Rename this property to darwin.logging.kafka.uniqueTopic
+          topic: nuar-test-log #This propertie disappear
+          properties:
+            propertie.kafka: true
+      util:
+        security:
+          authorization:
+            authorized-whitelist: #This property is deprecated and should be replaced by darwin.security.authorization.authorized-whitelist
+              - /validateCOCMock
+              - /validateCONMock
+            keyProvider: local #This propertie disappear
+            remote:
+              coc: https://localhost/cop/opesec/channel #Rename this property to darwin.security.authorization.remote.coc
+              con: https://localhost/cop/opesec/contract #Rename this property to darwin.security.authorization.remote.con
+              oprativeChannelRetries: 3 #This propertie disappear
+              oprativeBusinessRetries: 5 #This propertie disappear
+          white-list: #This property is deprecated and should be replaced by darwin.security.white-list
+            - /admin/health
+          sts-endpoint: https://localhost/sts #Rename this property to darwin.security.sts-endpoint
+          pkm-endpoint: https://localhost/pkm #Rename this property to darwin.security.pkm-endpoint
+          sts-retries: 4 #This propertie disappear
+          issuer: issuer #Rename this property to darwin.security.issuer
+          enabled: true #Rename this property to darwin.security.enabled
+          auth-query-parameter: parameter #Rename this property to darwin.security.auth-query-parameter
+          audience: #This property is deprecated and should be replaced by darwin.security.audience
+            - http://dummy.audience
+          omnichannel: # Rename
+            OFI:
+              pkm: https://pkm-ofi/v1/publicKey
+              sts: https://sts-ofi/
+
+        rest-template:
+          connection-request-timeout: 2000 #Rename this property to darwin.security.rest-template.connection-request-timeout
+          connect-timeout: 10000 #Rename this property to darwin.security.rest-template.connect-timeout
+          read-timeout: 10000 #Rename this property to darwin.security.rest-template.read-timeout
+
+        omnichannel:
+          security:
+            filter-order: 100 #Rename this property to darwin.omnichannel.filter.order
+          parameter: "channel" #Rename this property to darwin.omnichannel.parameter.channel
+          header: "X-Santander-Channel" #Rename this property to darwin.omnichannel.header.channel
+          externalChannelMap:
+            ALL:
+              OFI:
+                marco-channel: OFI_W
+                environment: INTRANET_Z
+        remote:
+          ws:
+            security:
+              types:
+                - name: userNameA #This property is deprecated and should be replaced by darwin.webservices.security-types(i).name
+                  mode: UsernameToken #This property is deprecated and should be replaced by darwin.webservices.security-types(i).mode
+                  user: "11535750P" #This property is deprecated and should be replaced by darwin.webservices.security-types(i).user
+                  password: "14725836" #This property is deprecated and should be replaced by darwin.webservices.security-types(i).password
+
+
