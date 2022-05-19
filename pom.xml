@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>es.santander.nuar</groupId>
-	<artifactId>migration-project-test</artifactId>
+	<artifactId>migration_from_nuar_1.7.1</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -116,6 +116,24 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- Test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-contract-wiremock</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Custom Test Dependencies -->
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock-jre8</artifactId>
+			<version>2.27.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -187,17 +205,20 @@
 			<plugin>
 				<groupId>org.openrewrite.maven</groupId>
 				<artifactId>rewrite-maven-plugin</artifactId>
-				<version>4.21.0</version>
+				<version>4.24.0</version>
 				<configuration>
 					<activeRecipes>
 						<recipe>com.santander.darwin.migrationassistant.DarwinMigration_2_11</recipe>
 					</activeRecipes>
+					<activeStyles>
+						<style>com.santander.darwin.migrationassistant.NoStarImports</style>
+					</activeStyles>
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>com.santander.darwin</groupId>
 						<artifactId>migration-assistant</artifactId>
-						<version>3.0.0-RC3</version>
+						<version>3.1.0-RC2</version>
 					</dependency>
 				</dependencies>
 			</plugin>

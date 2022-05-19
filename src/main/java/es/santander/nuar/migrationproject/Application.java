@@ -13,4 +13,8 @@ public class Application extends CachingConfigurerNoFatalErrors {
 		SpringApplication.run(Application.class, args);
 	}
 
+	public static void printLine(final String line) {
+		System.out.println(line);
+	}
+
 }
