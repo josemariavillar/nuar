@@ -209,6 +209,7 @@
 				<configuration>
 					<activeRecipes>
 						<recipe>com.santander.darwin.migrationassistant.DarwinMigration_2_11</recipe>
+						<recipe>org.openrewrite.java.spring.boot2.SpringBoot2JUnit4to5Migration</recipe>
 					</activeRecipes>
 					<activeStyles>
 						<style>com.santander.darwin.migrationassistant.NoStarImports</style>
